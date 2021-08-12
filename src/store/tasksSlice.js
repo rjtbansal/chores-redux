@@ -9,7 +9,8 @@ const createTask = (title) => ({
 
 const initialState = [
   createTask('Study Redux course on Fe masters'),
-  createTask('Clean the kitchen')
+  createTask('Clean the kitchen'),
+  createTask('Watch walking dead')
 ];
 
 export const tasksSlice = createSlice({
@@ -19,10 +20,11 @@ export const tasksSlice = createSlice({
     add: (state, action) => {
       state.push(createTask(action.payload));
     },
-    toggle: (state, action) => {
-      const task = state.find((task) => task.id === action.payload.taskId);
-      task.completed = action.payload.completed;
-    },
+    //verbose version in Task would use this reducer. We are using our own actionCreator now
+    // toggle: (state, action) => {
+    //   const task = state.find((task) => task.id === action.payload.taskId);
+    //   task.completed = action.payload.completed;
+    // },
     assignToUser: (state, action) => {
       const task = state.find((task) => task.id === action.payload.taskId);
       task.assignedTo = action.payload.humanId;
